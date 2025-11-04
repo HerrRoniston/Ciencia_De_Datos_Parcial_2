@@ -1,1 +1,18 @@
-﻿
+﻿# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Compilados
+bin/
+obj/
+
+# IIS Express
+iisexpress/
+
+# NuGet
+packages/
+*.nupkg
+
+# Logs
+*.log
