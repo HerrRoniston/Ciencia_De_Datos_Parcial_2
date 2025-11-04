@@ -11,7 +11,7 @@ namespace Ciencia_De_Datos_Parcial_2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
     }
 }
