@@ -8,16 +8,31 @@
         .auto-style1 {
             width: 100%;
         }
+        .auto-style2 {
+            width: 235px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <table class="auto-style1">
             <tr>
-                <td colspan="5">Ingrese los valores historicos de los plazos fijos de los bancos: </td>
+                <td class="auto-style2">Ingrese el capital a invertir:</td>
+                <td>
+                    <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="frvMonto" runat="server" ControlToValidate="txtMonto" ErrorMessage="Ingresar un monto"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:RegularExpressionValidator ID="revMonto" runat="server" ControlToValidate="txtMonto" ErrorMessage="Solamente numeros" ValidationExpression="^[0-9,$]*$"></asp:RegularExpressionValidator>
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style2">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -26,6 +41,10 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td colspan="7">Ingrese los valores historicos de los plazos fijos de los bancos: </td>
+            </tr>
+            <tr>
+                <td class="auto-style2"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Año</strong></td>
                 <td><strong>Banco Provincia:</strong></td>
                 <td>&nbsp;</td>
                 <td><strong>Banco Nación:</strong></td>
@@ -34,6 +53,8 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style2">
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2022</strong></td>
                 <td>
                     <asp:TextBox ID="txtProv1" runat="server"></asp:TextBox>
                 &nbsp;</td>
@@ -60,6 +81,8 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style2">
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2023</strong></td>
                 <td>
                     <asp:TextBox ID="txtProv2" runat="server"></asp:TextBox>
                 </td>
@@ -86,6 +109,8 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style2">
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2024</strong></td>
                 <td>
                     <asp:TextBox ID="txtProv3" runat="server"></asp:TextBox>
                 </td>
@@ -112,6 +137,8 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
                 <td>
                     &nbsp;</td>
                 <td>&nbsp;</td>
@@ -121,6 +148,8 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
                 <td>
                     <asp:Button ID="btnCalcularInversion" runat="server" Text="Calcular inversión" />
                 </td>
@@ -132,6 +161,8 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
                 <td>
                     <asp:Label ID="lblMensaje" runat="server"></asp:Label>
                 </td>
