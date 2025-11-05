@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="main.aspx.cs" Inherits="Ciencia_De_Datos_Parcial_2.Main" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -19,7 +20,7 @@
             <tr>
                 <td class="auto-style2">Ingrese el capital a invertir:</td>
                 <td>
-                    <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtMonto" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvMonto" runat="server" ControlToValidate="txtMonto" ErrorMessage="Ingresar un monto"></asp:RequiredFieldValidator>
@@ -56,7 +57,7 @@
                 <td class="auto-style2">
                     <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2022</strong></td>
                 <td>
-                    <asp:TextBox ID="txtProv1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtProv1" runat="server" TextMode="Number"></asp:TextBox>
                 &nbsp;</td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvProv1" runat="server" ControlToValidate="txtProv1" ErrorMessage="Ingresar un valor para el primer año"></asp:RequiredFieldValidator>
@@ -64,7 +65,7 @@
                     <asp:RegularExpressionValidator ID="revProv1" runat="server" ControlToValidate="txtProv1" ErrorMessage="Solamente numeros" ValidationExpression="^[0-9,$]*$"></asp:RegularExpressionValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtNac1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNac1" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvNac1" runat="server" ControlToValidate="txtNac1" ErrorMessage="Ingresar un valor para el primer año"></asp:RequiredFieldValidator>
@@ -72,7 +73,7 @@
                     <asp:RegularExpressionValidator ID="revNac1" runat="server" ControlToValidate="txtNac1" ErrorMessage="Solamente numeros" ValidationExpression="^[0-9,$]*$"></asp:RegularExpressionValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtHip1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtHip1" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvHip1" runat="server" ControlToValidate="txtHip1" ErrorMessage="Ingresar un valor para el primer año"></asp:RequiredFieldValidator>
@@ -84,7 +85,7 @@
                 <td class="auto-style2">
                     <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2023</strong></td>
                 <td>
-                    <asp:TextBox ID="txtProv2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtProv2" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvProv2" runat="server" ControlToValidate="txtProv2" ErrorMessage="Ingresar un valor para el segundo año"></asp:RequiredFieldValidator>
@@ -92,7 +93,7 @@
                     <asp:RegularExpressionValidator ID="revProv2" runat="server" ControlToValidate="txtProv2" ErrorMessage="Solamente numeros" ValidationExpression="^[0-9,$]*$"></asp:RegularExpressionValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtNac2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNac2" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvNac2" runat="server" ControlToValidate="txtNac2" ErrorMessage="Ingresar un valor para el segundo año"></asp:RequiredFieldValidator>
@@ -100,7 +101,7 @@
                     <asp:RegularExpressionValidator ID="revNac2" runat="server" ControlToValidate="txtNac2" ErrorMessage="Solamente numeros" ValidationExpression="^[0-9,$]*$"></asp:RegularExpressionValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtHip2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtHip2" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvHip2" runat="server" ControlToValidate="txtHip2" ErrorMessage="Ingresar un valor para el segundo año"></asp:RequiredFieldValidator>
@@ -112,7 +113,7 @@
                 <td class="auto-style2">
                     <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2024</strong></td>
                 <td>
-                    <asp:TextBox ID="txtProv3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtProv3" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvProv3" runat="server" ControlToValidate="txtProv3" ErrorMessage="Ingresar un valor para el tercer año"></asp:RequiredFieldValidator>
@@ -120,7 +121,7 @@
                     <asp:RegularExpressionValidator ID="revProv3" runat="server" ControlToValidate="txtProv3" ErrorMessage="Solamente numeros" ValidationExpression="^[0-9,$]*$"></asp:RegularExpressionValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtNac3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNac3" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvNac3" runat="server" ControlToValidate="txtNac3" ErrorMessage="Ingresar un valor para el tercer año"></asp:RequiredFieldValidator>
@@ -128,7 +129,7 @@
                     <asp:RegularExpressionValidator ID="revNac3" runat="server" ControlToValidate="txtNac3" ErrorMessage="Solamente numeros" ValidationExpression="^[0-9,$]*$"></asp:RegularExpressionValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtHip3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtHip3" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="frvHip3" runat="server" ControlToValidate="txtHip3" ErrorMessage="Ingresar un valor para el tercer año"></asp:RequiredFieldValidator>
@@ -151,8 +152,20 @@
                 <td class="auto-style2">
                     &nbsp;</td>
                 <td>
-                    <asp:Button ID="btnCalcularInversion" runat="server" Text="Calcular inversión" />
+                    <asp:Button ID="btnCalcularInversion" runat="server" Text="Calcular inversión" OnClick="btnCalcularInversion_Click" />
                 </td>
+                <td>
+                    &nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
                 <td>
                     &nbsp;</td>
                 <td>&nbsp;</td>
