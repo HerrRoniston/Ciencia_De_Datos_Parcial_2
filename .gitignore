@@ -1,0 +1,15 @@
+﻿# Ignora el .vs en la raíz (Nivel Solución)
+.vs/
+
+# Ignora archivos de compilación dentro de la carpeta del proyecto
+Ciencia_De_Datos_Parcial_2/bin/
+Ciencia_De_Datos_Parcial_2/obj/
+
+# Ignora los paquetes dentro de la carpeta del proyecto
+Ciencia_De_Datos_Parcial_2/packages/
+
+# Ignorar estos archivos en cualquier parte del proyecto
+*.user
+*.suo
+*.nupkg
+*.log
