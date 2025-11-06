@@ -18,38 +18,39 @@ namespace Ciencia_De_Datos_Parcial_2
         {
             try
             {
-                // 1️⃣ Convertir los valores ingresados a float y guardarlos en listas
-                List<float> tasasProvincia = new List<float>
+                // 1️⃣ Convertir los valores ingresados a decimal y guardarlos en listas
+                List<decimal> tasasProvincia = new List<decimal>
                 {
-                    float.Parse(txtProv1.Text),
-                    float.Parse(txtProv2.Text),
-                    float.Parse(txtProv3.Text)
+                    decimal.Parse(txtProv1.Text),
+                    decimal.Parse(txtProv2.Text),
+                    decimal.Parse(txtProv3.Text)
                 };
 
-                List<float> tasasNacion = new List<float>
+                List<decimal> tasasNacion = new List<decimal>
                 {
-                    float.Parse(txtNac1.Text),
-                    float.Parse(txtNac2.Text),
-                    float.Parse(txtNac3.Text)
+                    decimal.Parse(txtNac1.Text),
+                    decimal.Parse(txtNac2.Text),
+                    decimal.Parse(txtNac3.Text)
                 };
 
-                List<float> tasasHipotecario = new List<float>
+                List<decimal> tasasHipotecario = new List<decimal>
                 {
-                    float.Parse(txtHip1.Text),
-                    float.Parse(txtHip2.Text),
-                    float.Parse(txtHip3.Text)
+                    decimal.Parse(txtHip1.Text),
+                    decimal.Parse(txtHip2.Text),
+                    decimal.Parse(txtHip3.Text)
                 };
 
                 // 2️⃣ Calcular los promedios
-                float promedioProv = CalcularPromedio(tasasProvincia);
-                float promedioNac = CalcularPromedio(tasasNacion);
-                float promedioHip = CalcularPromedio(tasasHipotecario);
+                // Esta parte ahora funciona porque CalcularPromedio acepta List<decimal>
+                decimal promedioProv = CalcularPromedio(tasasProvincia);
+                decimal promedioNac = CalcularPromedio(tasasNacion);
+                decimal promedioHip = CalcularPromedio(tasasHipotecario);
 
                 // 3️⃣ Mostrar los resultados en pantalla
                 lblMensaje.Text = "PROMEDIOS ANUALES:<br/>" +
-                                  $"BANCO PROVINCIA: {promedioProv:F2}%<br/>" +
-                                  $"BANCO NACION: {promedioNac:F2}%<br/>" +
-                                  $"BANCO HIPOTECARIO: {promedioHip:F2}%<br/><br/>";
+                                    $"BANCO PROVINCIA: ${promedioProv:F2}<br/>" +
+                                    $"BANCO NACION: ${promedioNac:F2}<br/>" +
+                                    $"BANCO HIPOTECARIO: ${promedioHip:F2}<br/><br/>";
             }
             catch (FormatException)
             {
@@ -57,11 +58,20 @@ namespace Ciencia_De_Datos_Parcial_2
             }
         }
 
-        private float CalcularPromedio(List<float> tasas)
+        // 🛑 --- CORRECCIÓN AQUÍ --- 🛑
+        // Se cambió 'float' por 'decimal' para que coincida con las listas
+        private decimal CalcularPromedio(List<decimal> tasas)
         {
-            float suma = 0;
-            foreach (float t in tasas)
+            decimal suma = 0; // Se cambió 'float' por 'decimal'
+            foreach (decimal t in tasas) // Se cambió 'float' por 'decimal'
                 suma += t;
+
+            // Se agrega una validación para evitar división por cero si la lista está vacía
+            if (tasas.Count == 0)
+            {
+                return 0;
+            }
+
             return suma / tasas.Count;
         }
 
@@ -99,10 +109,12 @@ namespace Ciencia_De_Datos_Parcial_2
         {
             lblMensaje.Text += "</br><b>La mejor opción para invertir:</b><br/>";
             lblMensaje.Text += "Banco recomendado -> " + BancoRecomendado + "<br/>";
-            lblMensaje.Text += "Opción más rentable  -> " + OpcionMasRentable + "<br/>";
+            lblMensaje.Text += "Opción más rentable  -> " + OpcionMasRentable + "<br/>";
             lblMensaje.Text += "Rendimiento/Ganancia -> " + Ganancia + "<br/>";
         }
 
+        // ℹ️ NOTA: El error IDE1006 es solo una advertencia de estilo sobre
+        // el nombre de este método. Puedes ignorarlo o cambiar el nombre a "BtnCalcularInversion_Click".
         protected void btnCalcularInversion_Click(object sender, EventArgs e)
         {
             CalcularPromedios();
