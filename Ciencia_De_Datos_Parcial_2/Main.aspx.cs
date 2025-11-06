@@ -94,6 +94,15 @@ namespace Ciencia_De_Datos_Parcial_2
             lblMensaje.Text += "Banco Hipotecario: Mes = " + BH[0] + ", Trimestral = " + BH[1] + ", Anual = " + BH[2] + "<br/>";
         }
 
+        // Aporte 5 - Vero
+        public void MostrarElMejorBanco(string BancoRecomendado, string OpcionMasRentable, decimal Ganancia)
+        {
+            lblMensaje.Text += "</br><b>La mejor opción para invertir:</b><br/>";
+            lblMensaje.Text += "Banco recomendado -> " + BancoRecomendado + "<br/>";
+            lblMensaje.Text += "Opción más rentable  -> " + OpcionMasRentable + "<br/>";
+            lblMensaje.Text += "Rendimiento/Ganancia -> " + Ganancia + "<br/>";
+        }
+
         protected void btnCalcularInversion_Click(object sender, EventArgs e)
         {
             CalcularPromedios();
@@ -105,6 +114,12 @@ namespace Ciencia_De_Datos_Parcial_2
 
             MostrarRendimientosPorAño(bp, bn, bh, año);
             */
+
+            /*- Cuando tengamos los resultados del mejor banco, los ingresar para que se muestren
+             MostrarElMejorBanco(BancoRecomendado, OpcionMasRentable, Ganancia) <-
+
+            -OpcionMasRentable <-se refiere a si es mejor mensual, trimentral, anual (por las dudas)
+             */
         }
     }
 }
