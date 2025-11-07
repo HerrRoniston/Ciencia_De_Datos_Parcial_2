@@ -18,7 +18,7 @@ namespace Ciencia_De_Datos_Parcial_2
         {
             try
             {
-                // 1️⃣ Convertir los valores ingresados a decimal y guardarlos en listas
+                // Se cambió 'float' por 'decimal'
                 List<decimal> tasasProvincia = new List<decimal>
                 {
                     decimal.Parse(txtProv1.Text),
@@ -40,13 +40,11 @@ namespace Ciencia_De_Datos_Parcial_2
                     decimal.Parse(txtHip3.Text)
                 };
 
-                // 2️⃣ Calcular los promedios
-                // Esta parte ahora funciona porque CalcularPromedio acepta List<decimal>
+                // Se cambió 'float' por 'decimal'
                 decimal promedioProv = CalcularPromedio(tasasProvincia);
                 decimal promedioNac = CalcularPromedio(tasasNacion);
                 decimal promedioHip = CalcularPromedio(tasasHipotecario);
 
-                // 3️⃣ Mostrar los resultados en pantalla
                 lblMensaje.Text = "PROMEDIOS ANUALES:<br/>" +
                                     $"BANCO PROVINCIA: ${promedioProv:F2}<br/>" +
                                     $"BANCO NACION: ${promedioNac:F2}<br/>" +
@@ -58,15 +56,13 @@ namespace Ciencia_De_Datos_Parcial_2
             }
         }
 
-        // 🛑 --- CORRECCIÓN AQUÍ --- 🛑
-        // Se cambió 'float' por 'decimal' para que coincida con las listas
         private decimal CalcularPromedio(List<decimal> tasas)
         {
             decimal suma = 0; // Se cambió 'float' por 'decimal'
             foreach (decimal t in tasas) // Se cambió 'float' por 'decimal'
                 suma += t;
 
-            // Se agrega una validación para evitar división por cero si la lista está vacía
+            // Validación para evitar división por cero si la lista está vacía
             if (tasas.Count == 0)
             {
                 return 0;
