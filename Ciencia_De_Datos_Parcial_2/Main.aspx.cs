@@ -74,30 +74,51 @@ namespace Ciencia_De_Datos_Parcial_2
         // Aporte 2 - Lucas
         public decimal CalcularAnual(decimal capital, decimal tasaAnualPromedio)
         {
-            return capital * (1 + tasaAnualPromedio);
+            decimal tasa = tasaAnualPromedio / 100; //se corrige divide entre 100 (RL)
+            return capital * (1 + tasa);
         }
 
         // Función para la Modalidad 2
         public decimal CalcularTrimestral(decimal capital, decimal tasaAnualPromedio)
         {
-            decimal tasaTrimestral = tasaAnualPromedio / 4;
+            decimal tasaTrimestral = (tasaAnualPromedio / 4)/100;//se corrige divide entre 100 (RL)
             return capital * (decimal)Math.Pow(1 + (double)tasaTrimestral, 4);
         }
 
         // Función para la Modalidad 3
         public decimal CalcularMensual(decimal capital, decimal tasaAnualPromedio)
         {
-            decimal tasaMensual = tasaAnualPromedio / 12;
+            decimal tasaMensual = (tasaAnualPromedio / 12)/100;//se corrige divide entre 100 (RL) 
             return capital * (decimal)Math.Pow(1 + (double)tasaMensual, 12);
         }
 
         // Aporte 3 - Alejo
         public void MostrarRendimientosPorAño(decimal[] BP, decimal[] BN, decimal[] BH, string año) //La idea seria que el valor en posicion 0 sea el mes, el 1 el trimestre y el 2 el año
         {
-            lblMensaje.Text += año + "<br/>";
-            lblMensaje.Text += "Banco Provincia: Mes = " + BP[0] + ", Trimestral = " + BP[1] + ", Anual = " + BP[2] + "<br/>";
-            lblMensaje.Text += "Banco Nacion: Mes = " + BN[0] + ", Trimestral = " + BN[1] + ", Anual = " + BN[2] + "<br/>";
-            lblMensaje.Text += "Banco Hipotecario: Mes = " + BH[0] + ", Trimestral = " + BH[1] + ", Anual = " + BH[2] + "<br/>";
+            // Obtener el capital inicial desde el TextBox
+            decimal capitalInicial = 0;
+            if (!decimal.TryParse(txtMonto.Text, out capitalInicial))
+            {
+                lblMensaje.Text += "<br/>❌ Error: El capital ingresado no es válido.<br/>";
+                return;
+            }
+
+            // Mostrar los rendimientos compuestos (mensual, trimestral, anual)
+            lblMensaje.Text += $"<br/><b>Rendimientos obtenidos ({año}):</b><br/>";
+            lblMensaje.Text += $"Banco Provincia: Mes = {BP[0]:F2}# Trimestral = {BP[1]:F2}# Anual = {BP[2]:F2}<br/>";
+            lblMensaje.Text += $"Banco Nación: Mes = {BN[0]:F2}# Trimestral = {BN[1]:F2}# Anual = {BN[2]:F2}<br/>";
+            lblMensaje.Text += $"Banco Hipotecario: Mes = {BH[0]:F2}# Trimestral = {BH[1]:F2}# Anual = {BH[2]:F2}<br/><br/>";
+
+            // Calcular las ganancias totales al finalizar el año (reinversión incluida)
+            decimal gananciaProvincia = BP[2] - capitalInicial;
+            decimal gananciaNacion = BN[2] - capitalInicial;
+            decimal gananciaHipotecario = BH[2] - capitalInicial;
+
+            // Mostrar resumen de ganancias
+            //lblMensaje.Text += "<b>Resumen de ganancias al finalizar el año:</b><br/>";
+            //lblMensaje.Text += $"Banco Provincia → Ganancia total: ${gananciaProvincia:F2}<br/>";
+            //lblMensaje.Text += $"Banco Nación → Ganancia total: ${gananciaNacion:F2}<br/>";
+            //lblMensaje.Text += $"Banco Hipotecario → Ganancia total: ${gananciaHipotecario:F2}<br/><br/>";
         }
 
         // Aporte 5 - Vero
@@ -106,7 +127,7 @@ namespace Ciencia_De_Datos_Parcial_2
             lblMensaje.Text += "</br><b>La mejor opción para invertir:</b><br/>";
             lblMensaje.Text += "Banco recomendado -> " + BancoRecomendado + "<br/>";
             lblMensaje.Text += "Opción más rentable  -> " + OpcionMasRentable + "<br/>";
-            lblMensaje.Text += "Rendimiento/Ganancia -> " + Ganancia + "<br/>";
+            lblMensaje.Text += "Rendimiento/Ganancia -> " + Ganancia.ToString("F2") + "<br/>";//se corrige para mostrar dos decimales solamente en resultado (RL)
         }
 
         // ℹ️ NOTA: El error IDE1006 es solo una advertencia de estilo sobre
@@ -128,6 +149,82 @@ namespace Ciencia_De_Datos_Parcial_2
 
             -OpcionMasRentable <-se refiere a si es mejor mensual, trimentral, anual (por las dudas)
              */
+
+            // Aporte 4 - Rosaura Limache (RL)
+            try
+            {
+                decimal capital = decimal.Parse(txtMonto.Text);
+
+                // Promedios (ya calculados en CalcularPromedios)
+                decimal promedioProv = CalcularPromedio(new List<decimal> {
+            decimal.Parse(txtProv1.Text),
+            decimal.Parse(txtProv2.Text),
+            decimal.Parse(txtProv3.Text)
+        }) / 100;
+
+                decimal promedioNac = CalcularPromedio(new List<decimal> {
+            decimal.Parse(txtNac1.Text),
+            decimal.Parse(txtNac2.Text),
+            decimal.Parse(txtNac3.Text)
+        }) / 100;
+
+                decimal promedioHip = CalcularPromedio(new List<decimal> {
+            decimal.Parse(txtHip1.Text),
+            decimal.Parse(txtHip2.Text),
+            decimal.Parse(txtHip3.Text)
+        }) / 100;
+
+                // Cálculos de inversión por modalidad
+                decimal provAnual = CalcularAnual(capital, promedioProv);
+                decimal provTrim = CalcularTrimestral(capital, promedioProv);
+                decimal provMens = CalcularMensual(capital, promedioProv);
+
+                decimal nacAnual = CalcularAnual(capital, promedioNac);
+                decimal nacTrim = CalcularTrimestral(capital, promedioNac);
+                decimal nacMens = CalcularMensual(capital, promedioNac);
+
+                decimal hipAnual = CalcularAnual(capital, promedioHip);
+                decimal hipTrim = CalcularTrimestral(capital, promedioHip);
+                decimal hipMens = CalcularMensual(capital, promedioHip);
+
+                // Mostrar rendimientos por banco
+                lblMensaje.Text += "<br/><b>Rendimientos obtenidos:</b><br/>";
+                MostrarRendimientosPorAño(
+                    new decimal[] { provMens, provTrim, provAnual },
+                    new decimal[] { nacMens, nacTrim, nacAnual },
+                    new decimal[] { hipMens, hipTrim, hipAnual },
+                    "Rendimiento estimado");
+
+                // Determinar el mejor banco y modalidad
+                Dictionary<string, decimal> rendimientos = new Dictionary<string, decimal>
+        {
+            { "Provincia - Mensual", provMens },
+            { "Provincia - Trimestral", provTrim },
+            { "Provincia - Anual", provAnual },
+            { "Nación - Mensual", nacMens },
+            { "Nación - Trimestral", nacTrim },
+            { "Nación - Anual", nacAnual },
+            { "Hipotecario - Mensual", hipMens },
+            { "Hipotecario - Trimestral", hipTrim },
+            { "Hipotecario - Anual", hipAnual }
+        };
+
+                var mejor = rendimientos.OrderByDescending(r => r.Value).First();
+
+                // Dividir banco y modalidad para mostrarlos
+                string[] partes = mejor.Key.Split('-');
+                string banco = partes[0].Trim();
+                string modalidad = partes[1].Trim();
+
+                decimal ganancia = mejor.Value - capital;
+
+                MostrarElMejorBanco(banco, modalidad, ganancia);
+            }
+            catch
+            {
+                lblMensaje.Text = "ERROR: Revise los valores ingresados.";
+            }
+
         }
     }
 }

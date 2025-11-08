@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="main.aspx.cs" Inherits="Ciencia_De_Datos_Parcial_2.Main" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="Ciencia_De_Datos_Parcial_2.Main" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
