@@ -74,21 +74,20 @@ namespace Ciencia_De_Datos_Parcial_2
         // Aporte 2 - Lucas
         public decimal CalcularAnual(decimal capital, decimal tasaAnualPromedio)
         {
-            decimal tasa = tasaAnualPromedio / 100; //se corrige divide entre 100 (RL)
-            return capital * (1 + tasa);
+            return capital * (1 + tasaAnualPromedio); //se cambia a la cuenta anterior
         }
 
         // Función para la Modalidad 2
         public decimal CalcularTrimestral(decimal capital, decimal tasaAnualPromedio)
         {
-            decimal tasaTrimestral = (tasaAnualPromedio / 4)/100;//se corrige divide entre 100 (RL)
+            decimal tasaTrimestral = tasaAnualPromedio / 4; //se cambia a la cuenta anterior
             return capital * (decimal)Math.Pow(1 + (double)tasaTrimestral, 4);
         }
 
         // Función para la Modalidad 3
         public decimal CalcularMensual(decimal capital, decimal tasaAnualPromedio)
         {
-            decimal tasaMensual = (tasaAnualPromedio / 12)/100;//se corrige divide entre 100 (RL) 
+            decimal tasaMensual = tasaAnualPromedio / 12; //se cambia a la cuenta anterior
             return capital * (decimal)Math.Pow(1 + (double)tasaMensual, 12);
         }
 
@@ -175,17 +174,18 @@ namespace Ciencia_De_Datos_Parcial_2
         }) / 100;
 
                 // Cálculos de inversión por modalidad
-                decimal provAnual = CalcularAnual(capital, promedioProv);
-                decimal provTrim = CalcularTrimestral(capital, promedioProv);
-                decimal provMens = CalcularMensual(capital, promedioProv);
+                //restamos porque el rendimiento es la diferencia que te da el banco de tu capital inicial
+                decimal provAnual = CalcularAnual(capital, promedioProv)-capital;
+                decimal provTrim = CalcularTrimestral(capital, promedioProv)-capital;
+                decimal provMens = CalcularMensual(capital, promedioProv)-capital;
 
-                decimal nacAnual = CalcularAnual(capital, promedioNac);
-                decimal nacTrim = CalcularTrimestral(capital, promedioNac);
-                decimal nacMens = CalcularMensual(capital, promedioNac);
+                decimal nacAnual = CalcularAnual(capital, promedioNac)-capital;
+                decimal nacTrim = CalcularTrimestral(capital, promedioNac)-capital;
+                decimal nacMens = CalcularMensual(capital, promedioNac)-capital;
 
-                decimal hipAnual = CalcularAnual(capital, promedioHip);
-                decimal hipTrim = CalcularTrimestral(capital, promedioHip);
-                decimal hipMens = CalcularMensual(capital, promedioHip);
+                decimal hipAnual = CalcularAnual(capital, promedioHip)-capital;
+                decimal hipTrim = CalcularTrimestral(capital, promedioHip) - capital;
+                decimal hipMens = CalcularMensual(capital, promedioHip) - capital;
 
                 // Mostrar rendimientos por banco
                 lblMensaje.Text += "<br/><b>Rendimientos obtenidos:</b><br/>";
@@ -216,7 +216,8 @@ namespace Ciencia_De_Datos_Parcial_2
                 string banco = partes[0].Trim();
                 string modalidad = partes[1].Trim();
 
-                decimal ganancia = mejor.Value - capital;
+                
+                decimal ganancia = mejor.Value; //no hace falta restar porque anteriormente se hizo
 
                 MostrarElMejorBanco(banco, modalidad, ganancia);
             }
