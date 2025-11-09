@@ -46,9 +46,9 @@ namespace Ciencia_De_Datos_Parcial_2
                 decimal promedioHip = CalcularPromedio(tasasHipotecario);
 
                 lblMensaje.Text = "PROMEDIOS ANUALES:<br/>" +
-                                    $"BANCO PROVINCIA: ${promedioProv:F2}<br/>" +
-                                    $"BANCO NACION: ${promedioNac:F2}<br/>" +
-                                    $"BANCO HIPOTECARIO: ${promedioHip:F2}<br/><br/>";
+                                    $"BANCO PROVINCIA: {promedioProv:F2}%<br/>" +
+                                    $"BANCO NACION: {promedioNac:F2}%<br/>" +
+                                    $"BANCO HIPOTECARIO: {promedioHip:F2}%<br/><br/>";
             }
             catch (FormatException)
             {
